@@ -1,20 +1,21 @@
 <!-- Updated At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $employee->updated_at !!}</p>
-</div>
+</div>-->
 
 <!-- Created At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{!! $employee->created_at !!}</p>
-</div>
+</div>-->
 
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}
-    <p>{!! $employee->status !!}</p>
+    <p>{!! ($employee->status==1)?'Activo':'inactivo' !!}</p>
 </div>
+
 
 <!-- Name Field -->
 <div class="form-group">
@@ -29,10 +30,10 @@
 </div>
 
 <!-- Password Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('password', 'Password:') !!}
     <p>{!! $employee->password !!}</p>
-</div>
+</div>-->
 
 <!-- Email Field -->
 <div class="form-group">
@@ -55,7 +56,7 @@
 <!-- Employee Type Id Field -->
 <div class="form-group">
     {!! Form::label('employee_type_id', 'Employee Type:') !!}
-    <p>{!! $employee->employee_type_id !!}</p>
+    <p>{!! $employee->employeeType->name !!}</p>
 </div>
 
 <!-- Company Id Field -->
@@ -71,8 +72,8 @@
 </div>
 
 <!-- Deleted At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('deleted_at', 'Deleted At:') !!}
     <p>{!! $employee->deleted_at !!}</p>
-</div>
+</div>-->
 

@@ -82,10 +82,8 @@ class EmployeeController extends AppBaseController {
 
         if (empty($employee)) {
             Flash::error('Employee not found');
-
             return redirect(route('employees.index'));
         }
-
         return view('employees.show')->with('employee', $employee);
     }
 
@@ -101,11 +99,12 @@ class EmployeeController extends AppBaseController {
 
         if (empty($employee)) {
             Flash::error('Employee not found');
-
             return redirect(route('employees.index'));
         }
-
-        return view('employees.edit')->with('employee', $employee);
+        $employeeType = $this->employeeTypeRepository->all();
+        $company = $this->companyRepository->all();
+        
+        return view('employees.edit')->with(array('employee'=>$employee,'employeeType'=>$employeeType,'company'=>$company));
     }
 
     /**

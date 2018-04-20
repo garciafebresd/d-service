@@ -19,7 +19,7 @@
 </div>-->
 
 <!-- Employee Type Id Field -->
-<div class="form-group col-sm-6">
+<!--<div class="form-group col-sm-6">
     <label for="employee_type_id">Employee Type:</label>
     <select class="form-control" name="employee_type_id" id="employee_type_id">
         @foreach($employeeType as $row)
@@ -30,7 +30,7 @@
                 >{!! $row ->name !!}</option>
         @endforeach
     </select>
-</div>
+</div>-->
 
 
 <!-- Name Field -->
