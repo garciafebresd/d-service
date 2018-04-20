@@ -43,7 +43,8 @@ class AlertsController extends AppBaseController {
      * @return Response
      */
     public function create() {
-        return view('alerts.create');
+        $alertType = $this->alertTypeRepository->all();
+        return view('alerts.create')->with('alertType', $alertType);
     }
 
     /**
@@ -91,14 +92,12 @@ class AlertsController extends AppBaseController {
      */
     public function edit($id) {
         $alerts = $this->alertsRepository->findWithoutFail($id);
-
         if (empty($alerts)) {
             Flash::error('Alerts not found');
-
             return redirect(route('alerts.index'));
         }
-
-        return view('alerts.edit')->with('alerts', $alerts);
+        $alertType = $this->alertTypeRepository->all();
+        return view('alerts.edit')->with(array('alerts'=> $alerts,'alertType'=>$alertType));
     }
 
     /**

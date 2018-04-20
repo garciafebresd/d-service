@@ -1,27 +1,3 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $clients->id !!}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $clients->updated_at !!}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $clients->created_at !!}</p>
-</div>
-
-<!-- Status Field -->
-<div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
-    <p>{!! $clients->status !!}</p>
-</div>
-
 <!-- Dni Field -->
 <div class="form-group">
     {!! Form::label('dni', 'Dni:') !!}
@@ -70,9 +46,34 @@
     <p>{!! $clients->client_type_id !!}</p>
 </div>
 
-<!-- Deleted At Field -->
+<!-- Status Field -->
 <div class="form-group">
+    {!! Form::label('status', 'Status:') !!}
+    <p>{!! $clients->status !!}</p>
+</div>
+
+
+<!-- Id Field -->
+<!--<div class="form-group">
+    {!! Form::label('id', 'Id:') !!}
+    <p>{!! $clients->id !!}</p>
+</div>-->
+
+<!-- Updated At Field -->
+<!--<div class="form-group">
+    {!! Form::label('updated_at', 'Updated At:') !!}
+    <p>{!! $clients->updated_at !!}</p>
+</div>-->
+
+<!-- Created At Field -->
+<!--<div class="form-group">
+    {!! Form::label('created_at', 'Created At:') !!}
+    <p>{!! $clients->created_at !!}</p>
+</div>-->
+
+<!-- Deleted At Field -->
+<!--<div class="form-group">
     {!! Form::label('deleted_at', 'Deleted At:') !!}
     <p>{!! $clients->deleted_at !!}</p>
-</div>
+</div>-->
 

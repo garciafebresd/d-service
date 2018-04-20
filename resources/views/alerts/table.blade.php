@@ -4,7 +4,7 @@
             <th>Status</th>
         <th>Latitude</th>
         <th>Longitude</th>
-        <th>Alert Type Id</th>
+        <th>Alert Type</th>
         <th>Json Info</th>
             <th colspan="3">Action</th>
         </tr>
@@ -12,10 +12,10 @@
     <tbody>
     @foreach($alerts as $alerts)
         <tr>
-            <td>{!! $alerts->status !!}</td>
+            <td>{!! ($alerts->status==1)?'Activo':'inactivo' !!}</td>
             <td>{!! $alerts->latitude !!}</td>
             <td>{!! $alerts->longitude !!}</td>
-            <td>{!! $alerts->alert_type_id !!}</td>
+            <td>{!! $alerts->alertType->name !!}</td>
             <td>{!! $alerts->json_info !!}</td>
             <td>
                 {!! Form::open(['route' => ['alerts.destroy', $alerts->id], 'method' => 'delete']) !!}

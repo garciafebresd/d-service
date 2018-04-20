@@ -1,12 +1,3 @@
-<!-- Status Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('status', false) !!}
-        {!! Form::checkbox('status', '1', null) !!} 1
-    </label>
-</div>
-
 <!-- Dni Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('dni', 'Dni:') !!}
@@ -50,9 +41,34 @@
 </div>
 
 <!-- Client Type Id Field -->
-<div class="form-group col-sm-6">
+<!--<div class="form-group col-sm-6">
     {!! Form::label('client_type_id', 'Client Type Id:') !!}
     {!! Form::number('client_type_id', null, ['class' => 'form-control']) !!}
+</div>-->
+
+<!-- Employee Type Id Field -->
+<div class="form-group col-sm-6">
+    <label for="employee_type_id">Client Type:</label>
+    <select class="form-control" name="client_type_id" id="client_type_id">
+        @foreach($clientType as $row)
+        <option value="{!! $row->id !!}" 
+            @if(isset($client->client_type_id) && $client->client_type_id==$row->id)
+                selected="selected"
+            @endif                
+                >{!! $row ->name !!}</option>
+        @endforeach
+    </select>
+</div>
+
+
+
+<!-- Status Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('status', 'Status:') !!}
+    <label class="checkbox-inline">
+        {!! Form::hidden('status', false) !!}
+        {!! Form::checkbox('status', '1', null) !!} 1
+    </label>
 </div>
 
 <!-- Submit Field -->

@@ -18,7 +18,7 @@ class ClientsController extends AppBaseController {
     private $clientsRepository;
     private $clientTypeRepository;
 
-    public function __construct(ClientsRepository $clientsRepo,ClientTypeRepository $clientTypeRepo) {
+    public function __construct(ClientsRepository $clientsRepo, ClientTypeRepository $clientTypeRepo) {
         $this->clientsRepository = $clientsRepo;
         $this->clientTypeRepository = $clientTypeRepo;
     }
@@ -43,7 +43,9 @@ class ClientsController extends AppBaseController {
      * @return Response
      */
     public function create() {
-        return view('clients.create');
+        $clientType = $this->clientTypeRepository->all();
+        return view('clients.create')
+                        ->with('clientType', $clientType);
     }
 
     /**
@@ -94,11 +96,12 @@ class ClientsController extends AppBaseController {
 
         if (empty($clients)) {
             Flash::error('Clients not found');
-
             return redirect(route('clients.index'));
         }
 
-        return view('clients.edit')->with('clients', $clients);
+        $clientType = $this->clientTypeRepository->all();
+        
+        return view('clients.edit')->with(array('clients'=> $clients,'clientType'=> $clientType));
     }
 
     /**

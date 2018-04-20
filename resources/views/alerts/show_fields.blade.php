@@ -1,26 +1,20 @@
 <!-- Id Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('id', 'Id:') !!}
     <p>{!! $alerts->id !!}</p>
-</div>
+</div>-->
 
 <!-- Updated At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $alerts->updated_at !!}</p>
-</div>
+</div>-->
 
 <!-- Created At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{!! $alerts->created_at !!}</p>
-</div>
-
-<!-- Status Field -->
-<div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
-    <p>{!! $alerts->status !!}</p>
-</div>
+</div>-->
 
 <!-- Latitude Field -->
 <div class="form-group">
@@ -36,8 +30,8 @@
 
 <!-- Alert Type Id Field -->
 <div class="form-group">
-    {!! Form::label('alert_type_id', 'Alert Type Id:') !!}
-    <p>{!! $alerts->alert_type_id !!}</p>
+    {!! Form::label('alert_type_id', 'Alert Type:') !!}
+    <p>{!! $alerts->alertType->name !!}</p>
 </div>
 
 <!-- Json Info Field -->
@@ -47,8 +41,13 @@
 </div>
 
 <!-- Deleted At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('deleted_at', 'Deleted At:') !!}
     <p>{!! $alerts->deleted_at !!}</p>
-</div>
+</div>-->
 
+<!-- Status Field -->
+<div class="form-group">
+    {!! Form::label('status', 'Status:') !!}
+    <p>{!! $alerts->status !!}</p>
+</div>

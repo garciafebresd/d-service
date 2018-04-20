@@ -16,7 +16,7 @@
     <tbody>
     @foreach($clients as $clients)
         <tr>
-            <td>{!! $clients->status !!}</td>
+            <td>{!! ($clients->status==1)?'Activo':'inactivo' !!}</td>
             <td>{!! $clients->dni !!}</td>
             <td>{!! $clients->name !!}</td>
             <td>{!! $clients->last_name !!}</td>
@@ -24,7 +24,7 @@
             <td>{!! $clients->phone_number !!}</td>
             <td>{!! $clients->email_address !!}</td>
             <td>{!! $clients->address !!}</td>
-            <td>{!! $clients->client_type_id !!}</td>
+            <td>{!! $clients->clientType->name !!}</td>
             <td>
                 {!! Form::open(['route' => ['clients.destroy', $clients->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
