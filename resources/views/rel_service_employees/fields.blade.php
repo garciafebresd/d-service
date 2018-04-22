@@ -22,7 +22,7 @@
     {!! Form::number('employee_id', null, ['class' => 'form-control']) !!}
 </div>-->
 <div class="form-group col-sm-6">
-    <label for="service_id">Employee:</label>
+    <label for="employee_id">Employee:</label>
     <select class="form-control" name="employee_id" id="employee_id">
         @foreach($employee as $row)
         <option value="{!! $row->id !!}" 

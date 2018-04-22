@@ -1,10 +1,11 @@
- <?php
+<?php
 
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCalendarServiceRequest;
 use App\Http\Requests\UpdateCalendarServiceRequest;
 use App\Repositories\CalendarServiceRepository;
+use App\Repositories\ServiceRepository;
 use App\Repositories\ClientsRepository;
 use App\Repositories\EmployeeRepository;
 use App\Http\Controllers\AppBaseController;
@@ -17,11 +18,13 @@ class CalendarServiceController extends AppBaseController {
 
     /** @var  CalendarServiceRepository */
     private $calendarServiceRepository;
+    private $serviceRepository;
     private $employeeRepository;
-    private $clientsRepository;
+    private $clientsRepository;    
 
-    public function __construct(CalendarServiceRepository $calendarServiceRepo,EmployeeRepository $employeeRepo,ClientsRepository $clientsRepo) {
+    public function __construct(CalendarServiceRepository $calendarServiceRepo, ServiceRepository $serviceRepo, EmployeeRepository $employeeRepo, ClientsRepository $clientsRepo) {
         $this->calendarServiceRepository = $calendarServiceRepo;
+        $this->serviceRepository = $serviceRepo;        
         $this->employeeRepository = $employeeRepo;
         $this->clientsRepository = $clientsRepo;
     }
@@ -35,7 +38,6 @@ class CalendarServiceController extends AppBaseController {
     public function index(Request $request) {
         $this->calendarServiceRepository->pushCriteria(new RequestCriteria($request));
         $calendarServices = $this->calendarServiceRepository->all();
-
         return view('calendar_services.index')
                         ->with('calendarServices', $calendarServices);
     }
@@ -46,7 +48,11 @@ class CalendarServiceController extends AppBaseController {
      * @return Response
      */
     public function create() {
-        return view('calendar_services.create');
+        $service = $this->serviceRepository->all();
+        $employee = $this->employeeRepository->all();
+        $client = $this->clientsRepository->all();
+        return view('calendar_services.create')
+                        ->with(array('service'=>$service, 'employee' => $employee, 'client' => $client));
     }
 
     /**
@@ -58,9 +64,7 @@ class CalendarServiceController extends AppBaseController {
      */
     public function store(CreateCalendarServiceRequest $request) {
         $input = $request->all();
-
         $calendarService = $this->calendarServiceRepository->create($input);
-
         Flash::success('Calendar Service saved successfully.');
 
         return redirect(route('calendarServices.index'));
@@ -94,14 +98,16 @@ class CalendarServiceController extends AppBaseController {
      */
     public function edit($id) {
         $calendarService = $this->calendarServiceRepository->findWithoutFail($id);
-
         if (empty($calendarService)) {
             Flash::error('Calendar Service not found');
-
             return redirect(route('calendarServices.index'));
         }
+        $service = $this->serviceRepository->all();
+        $employee = $this->employeeRepository->all();        
+        $client = $this->clientsRepository->all();
 
-        return view('calendar_services.edit')->with('calendarService', $calendarService);
+        return view('calendar_services.edit')
+                        ->with(array('calendarService' => $calendarService, 'service'=>$service, 'employee' => $employee, 'client' => $client));
     }
 
     /**

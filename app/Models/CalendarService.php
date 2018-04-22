@@ -82,7 +82,7 @@ class CalendarService extends Model
      **/
     public function client()
     {
-        return $this->belongsTo(\App\Models\Client::class);
+        return $this->belongsTo(\App\Models\Clients::class);
     }
 
     /**

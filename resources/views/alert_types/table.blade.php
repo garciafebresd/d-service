@@ -10,7 +10,7 @@
     <tbody>
     @foreach($alertTypes as $alertType)
         <tr>
-            <td>{!! $alertType->status !!}</td>
+            <td>{!! ($alertType->status==1)?'Activo':'inactivo' !!}</td>
             <td>{!! $alertType->name !!}</td>
             <td>{!! $alertType->description !!}</td>
             <td>

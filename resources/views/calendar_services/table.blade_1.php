@@ -13,14 +13,17 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($calendarServices as $calendarService)
+<!--    @foreach($calendarServices as $calendarService)
         <tr>
             <td>{!! ($calendarService->status==1)?'Activo':'inactivo' !!}</td>
             <td>{!! $calendarService->service_date !!}</td>
+            <td>{!! $calendarService->client_id !!}</td>
+            <td>{!! $calendarService->employee_id !!}</td>
+            <td>{!! $calendarService->service_id !!}</td>
             <td>{!! $calendarService->client->name.' '.$calendarService->client->last_name !!}</td>
             <td>{!! $calendarService->employee->name.' '.$calendarService->employee->last_name !!}</td>
             <td>{!! $calendarService->service->name !!}</td>
-            <!--<td>{!! $calendarService->payment_method_id !!}</td>-->
+            <td>{!! $calendarService->payment_method_id !!}</td>
             <td>{!! $calendarService->description !!}</td>
             <td>{!! $calendarService->json_info !!}</td>
             <td>
@@ -33,6 +36,6 @@
                 {!! Form::close() !!}
             </td>
         </tr>
-    @endforeach
+    @endforeach-->
     </tbody>
 </table>

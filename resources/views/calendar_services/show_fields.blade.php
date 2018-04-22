@@ -5,21 +5,21 @@
 </div>
 
 <!-- Updated At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $calendarService->updated_at !!}</p>
-</div>
+</div>-->
 
 <!-- Created At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{!! $calendarService->created_at !!}</p>
-</div>
+</div>-->
 
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}
-    <p>{!! $calendarService->status !!}</p>
+    <p>{!! ($calendarService->status==1)?'Activo':'inactivo' !!}</p>
 </div>
 
 <!-- Service Date Field -->
@@ -30,27 +30,29 @@
 
 <!-- Client Id Field -->
 <div class="form-group">
-    {!! Form::label('client_id', 'Client Id:') !!}
-    <p>{!! $calendarService->client_id !!}</p>
+    {!! Form::label('client_id', 'Client:') !!}
+    <p>{!! $calendarService->clients->name.' '.$calendarService->clients->last_name !!}</p>
 </div>
+
+
 
 <!-- Employee Id Field -->
 <div class="form-group">
-    {!! Form::label('employee_id', 'Employee Id:') !!}
-    <p>{!! $calendarService->employee_id !!}</p>
+    {!! Form::label('employee_id', 'Employee:') !!}
+    <p>{!! $calendarService->employee->name.' '.$calendarService->employee->last_name !!}</p>
 </div>
 
 <!-- Service Id Field -->
 <div class="form-group">
-    {!! Form::label('service_id', 'Service Id:') !!}
-    <p>{!! $calendarService->service_id !!}</p>
+    {!! Form::label('service_id', 'Service:') !!}
+    <p>{!! $calendarService->service->name !!}</p>
 </div>
 
 <!-- Payment Method Id Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('payment_method_id', 'Payment Method Id:') !!}
     <p>{!! $calendarService->payment_method_id !!}</p>
-</div>
+</div>-->
 
 <!-- Description Field -->
 <div class="form-group">
@@ -65,8 +67,8 @@
 </div>
 
 <!-- Deleted At Field -->
-<div class="form-group">
+<!--<div class="form-group">
     {!! Form::label('deleted_at', 'Deleted At:') !!}
     <p>{!! $calendarService->deleted_at !!}</p>
-</div>
+</div>-->
 
