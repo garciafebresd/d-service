@@ -16,12 +16,6 @@
     <p>{!! $relServiceEmployee->employee_id !!}</p>
 </div>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $relServiceEmployee->updated_at !!}</p>
-</div>
-
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
@@ -31,12 +25,6 @@
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}
-    <p>{!! $relServiceEmployee->status !!}</p>
-</div>
-
-<!-- Deleted At Field -->
-<div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    <p>{!! $relServiceEmployee->deleted_at !!}</p>
+    <p>{!! ($relServiceEmployee->status==1)?'Activo':'inactivo' !!}</p>
 </div>
 

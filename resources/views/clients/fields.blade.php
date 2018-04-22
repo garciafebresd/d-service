@@ -41,12 +41,6 @@
 </div>
 
 <!-- Client Type Id Field -->
-<!--<div class="form-group col-sm-6">
-    {!! Form::label('client_type_id', 'Client Type Id:') !!}
-    {!! Form::number('client_type_id', null, ['class' => 'form-control']) !!}
-</div>-->
-
-<!-- Employee Type Id Field -->
 <div class="form-group col-sm-6">
     <label for="employee_type_id">Client Type:</label>
     <select class="form-control" name="client_type_id" id="client_type_id">

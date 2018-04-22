@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateRelServiceEmployeeRequest;
 use App\Http\Requests\UpdateRelServiceEmployeeRequest;
 use App\Repositories\RelServiceEmployeeRepository;
+use App\Repositories\ServiceRepository;
+use App\Repositories\EmployeeRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -15,9 +17,13 @@ class RelServiceEmployeeController extends AppBaseController {
 
     /** @var  RelServiceEmployeeRepository */
     private $relServiceEmployeeRepository;
+    private $serviceRepository;
+    private $employeeRepository;
 
-    public function __construct(RelServiceEmployeeRepository $relServiceEmployeeRepo) {
+    public function __construct(RelServiceEmployeeRepository $relServiceEmployeeRepo, ServiceRepository $serviceRepo, EmployeeRepository $employeeRepo) {
         $this->relServiceEmployeeRepository = $relServiceEmployeeRepo;
+        $this->serviceRepository = $serviceRepo;
+        $this->employeeRepository = $employeeRepo;
     }
 
     /**
@@ -40,7 +46,11 @@ class RelServiceEmployeeController extends AppBaseController {
      * @return Response
      */
     public function create() {
-        return view('rel_service_employees.create');
+        $service = $this->serviceRepository->all();
+        $employee = $this->employeeRepository->all();
+
+        return view('rel_service_employees.create')
+                        ->with(array('service' => $service, 'employee' => $employee));
     }
 
     /**
@@ -88,14 +98,14 @@ class RelServiceEmployeeController extends AppBaseController {
      */
     public function edit($id) {
         $relServiceEmployee = $this->relServiceEmployeeRepository->findWithoutFail($id);
-
         if (empty($relServiceEmployee)) {
             Flash::error('Rel Service Employee not found');
-
             return redirect(route('relServiceEmployees.index'));
         }
-
-        return view('rel_service_employees.edit')->with('relServiceEmployee', $relServiceEmployee);
+        $service = $this->serviceRepository->all();
+        $employee = $this->employeeRepository->all();
+        
+        return view('rel_service_employees.edit')->with(array('relServiceEmployee'=> $relServiceEmployee,'service' => $service, 'employee' => $employee));
     }
 
     /**

@@ -49,7 +49,7 @@
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}
-    <p>{!! $clients->status !!}</p>
+    <p>{!! ($clients->status==1)?'Activo':'inactivo' !!}</p>
 </div>
 
 

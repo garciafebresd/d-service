@@ -1,18 +1,20 @@
 <table class="table table-responsive" id="relServiceEmployees-table">
     <thead>
         <tr>
-            <th>Service Id</th>
-        <th>Employee Id</th>
-        <th>Status</th>
+            <th>Service</th>
+            <th>Employee</th>
+            <th>username</th>
+            <th>Status</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
     <tbody>
-    @foreach($relServiceEmployees as $relServiceEmployee)
+        @foreach($relServiceEmployees as $relServiceEmployee)
         <tr>
-            <td>{!! $relServiceEmployee->service_id !!}</td>
-            <td>{!! $relServiceEmployee->employee_id !!}</td>
-            <td>{!! $relServiceEmployee->status !!}</td>
+            <td>{!! $relServiceEmployee->service->name !!}</td>
+            <td>{!! $relServiceEmployee->employee->name.' '.$relServiceEmployee->employee->last_name !!}</td>
+            <td>{!! $relServiceEmployee->employee->email !!}</td>
+            <td>{!! ($relServiceEmployee->status==1)?'Activo':'inactivo' !!}</td>
             <td>
                 {!! Form::open(['route' => ['relServiceEmployees.destroy', $relServiceEmployee->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
@@ -23,6 +25,6 @@
                 {!! Form::close() !!}
             </td>
         </tr>
-    @endforeach
+        @endforeach
     </tbody>
 </table>
